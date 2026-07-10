@@ -12,7 +12,7 @@ Observations:
 
 ## Dataset Cleaning
 
-Current size: (7043, 29)
+Current size: (7043, 20)
 
 Before training the model, I removed columns that do not contribute meaningful information. Such as:
 - CustomerID, unique identifier.
