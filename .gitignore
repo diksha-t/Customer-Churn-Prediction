@@ -4,6 +4,6 @@ __pycache__/
 
 *.pyc
 
-models/
-
+model/
+*.pkl
 .DS_Store
