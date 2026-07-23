@@ -1,8 +1,8 @@
 import joblib
 import pandas as pd
 
-model = joblib.load("../model/logistic_regression_model.pkl")
-scaler = joblib.load("../model/standard_scaler.pkl")
+model = joblib.load("model/logistic_regression_model.pkl")
+scaler = joblib.load("model/standard_scaler.pkl")
 
 FEATURES = [
  'Tenure Months',
@@ -135,10 +135,9 @@ def predict_customer(
         
 # converting dictionary to dataframe, for the model
     df = pd.DataFrame([data])
-    df[["Tenure Months", "Monthly Charges", "Total Charges"]] = scaler.transform(
-    [["Tenure Months", "Monthly Charges", "Total Charges"]]
+    df[["Tenure Months", "Monthly Charges", "Total Charges"]] = scaler.transform(df[["Tenure Months", "Monthly Charges", "Total Charges"]]
     )
 
     prediction = model.predict(df)[0]
-    probability = model.predict_proba(df)[1]
+    probability = model.predict_proba(df)[0][1]
     return prediction, probability
