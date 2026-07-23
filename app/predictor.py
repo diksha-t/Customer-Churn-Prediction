@@ -1,4 +1,5 @@
 import joblib
+import pandas as pd
 
 model = joblib.load("../model/logistic_regression_model.pkl")
 scaler = joblib.load("../model/standard_scaler.pkl")
@@ -35,8 +36,6 @@ FEATURES = [
  'Payment Method_Electronic check',
  'Payment Method_Mailed check'
 ]
-
-import pandas as pd
 
 def predict_customer(
     tenure,
@@ -81,3 +80,65 @@ def predict_customer(
         
     if paperless_billing == "Yes":
         data["Paperless Billing_Yes"] = 1
+        
+    if multiple_lines == "Yes":
+        data["Multiple Lines_Yes"] = 1
+    elif multiple_lines == "No phone service":
+        data["Multiple Lines_No phone service"] = 1
+        
+    if internet_service == "Fiber optic":
+        data["Internet Service_Fiber optic"] = 1
+    elif internet_service == "No":
+        data["Internet Service_No"] = 1
+        
+    if online_security == "Yes":
+        data["Online Security_Yes"] = 1
+    elif online_security == "No internet service":
+        data["Online Security_No internet service"] = 1
+        
+    if online_backup == "Yes":
+        data["Online Backup_Yes"] = 1
+    elif online_backup == "No internet service":
+        data["Online Backup_No internet service"] = 1
+        
+    if device_protection == "Yes":
+        data["Device Protection_Yes"] = 1
+    elif device_protection == "No internet service":
+        data["Device Protection_No internet service"] = 1
+        
+    if tech_support == "Yes":
+        data["Tech Support_Yes"] = 1
+    elif tech_support == "No internet service":
+        data["Tech Support_No internet service"] = 1
+        
+    if streaming_tv == "Yes":
+        data["Streaming TV_Yes"] = 1
+    elif streaming_tv == "No internet service":
+        data["Streaming TV_No internet service"] = 1
+        
+    if streaming_movies == "Yes":
+        data["Streaming Movies_Yes"] = 1
+    elif streaming_movies == "No internet service":
+        data["Streaming Movies_No internet service"] = 1
+        
+    if contract == "One year":
+        data["Contract_One year"] = 1
+    elif contract == "Two year":
+        data["Contract_Two year"] = 1
+        
+    if payment_method == "Electronic check":
+        data["Payment Method_Electronic check"] = 1
+    elif payment_method == "Mailed check":
+        data["Payment Method_Mailed check"] = 1
+    elif payment_method == "Credit card (automatic)":
+        data["Payment Method_Credit card (automatic)"] = 1
+        
+# converting dictionary to dataframe, for the model
+    df = pd.DataFrame([data])
+    df[["Tenure Months", "Monthly Charges", "Total Charges"]] = scaler.transform(
+    [["Tenure Months", "Monthly Charges", "Total Charges"]]
+    )
+
+    prediction = model.predict(df)[0]
+    probability = model.predict_proba(df)[1]
+    return prediction, probability
