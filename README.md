@@ -23,7 +23,8 @@ This project includes data preprocessing, exploratory data analysis, model train
 
 ## Project Structure
 
-```Customer Churn Prediction/
+```text
+Customer Churn Prediction/
 │
 ├── app/
 │   ├── app.py
@@ -51,7 +52,7 @@ This project includes data preprocessing, exploratory data analysis, model train
 
 ## Dataset
 
-The project uses the IBM Telco Customer Churn dataset containing customer demograohics, account information, services subscribed, billing details and churn status.
+The project uses the IBM Telco Customer Churn dataset containing customer demographics, account information, services subscribed, billing details and churn status.
 
 ---
 
