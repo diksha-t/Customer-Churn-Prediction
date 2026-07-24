@@ -71,8 +71,8 @@ The project uses the IBM Telco Customer Churn dataset containing customer demogr
 
 ## Machine Learning Model
 
-# Model Used : Logistic Regression
-# Preprocessing :
+### Model Used : Logistic Regression
+### Preprocessing :
 - Missing value handling
 - One-Hot Encoding
 - Feature Scaling using StandardScaler
