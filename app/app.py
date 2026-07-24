@@ -8,10 +8,11 @@ st.set_page_config(
 
 st.title("Customer Churn Prediction")
 
-st.write("""
-    Predict whether a telecom customer is likely to **churn** using a trained Machine Learning model.
-    Fill in the customer information below and click **Predict Churn**.
-    """)
+st.markdown("""
+Predict whether a telecom customer is likely to churn using a trained Machine Learning model.
+
+Fill in the customer information below and click **Predict Churn**.
+""")
 
 st.divider()
 
@@ -186,12 +187,10 @@ if predict:
         st.success("Customer is likely to stay.")
         
     st.metric(
-        "Churn Probability",
-        f"{probability*100:.2f}%"
+        label = "Churn Probability",
+        value = f"{probability*100:.2f}%"
     )
     
-if prediction == 1:
-
     st.info("""
 ### Recommendation
 
@@ -213,3 +212,24 @@ Customer appears satisfied.
 
 Continue regular engagement and maintain service quality.
 """)
+    
+with st.sidebar:
+    st.title("About")
+    st.write("""
+    **Model**
+    Logistic Regression
+    
+    **Accuracy**
+    80.45%
+    
+    **ROC-AUC**
+    0.843
+    
+    **Dataset**
+    IBM Telco Customer Churn
+    """)
+    
+st.divider()
+st.caption(
+    "Built with Python, Streamlit and Scikit-learn | Created by Diksha"
+)

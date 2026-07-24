@@ -67,7 +67,7 @@ def predict_customer(
         data["Gender_Male"] = 1
     
     if senior == "Yes":
-        data["Senior_Citizen_Yes"] = 1
+        data["Senior Citizen_Yes"] = 1
     
     if partner == "Yes":
         data["Partner_Yes"] = 1
@@ -110,11 +110,6 @@ def predict_customer(
         data["Tech Support_Yes"] = 1
     elif tech_support == "No internet service":
         data["Tech Support_No internet service"] = 1
-        
-    if streaming_tv == "Yes":
-        data["Streaming TV_Yes"] = 1
-    elif streaming_tv == "No internet service":
-        data["Streaming TV_No internet service"] = 1
         
     if streaming_movies == "Yes":
         data["Streaming Movies_Yes"] = 1
